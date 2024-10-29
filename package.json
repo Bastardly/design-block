@@ -20,13 +20,13 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com:Bastardly/design-block.git"
   },
   "keywords": [
     "webcomponent",
     "webcomponent2",
-    "we component",
-    "we components",
+    "web component",
+    "web components",
     "design",
     "ux",
     "design system"
@@ -34,7 +34,7 @@
   "author": "Flemming Hansen",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/Bastardly/design-block/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/Bastardly/design-block#readme"
 }

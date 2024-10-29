@@ -93,12 +93,14 @@ export class ContainerDiv extends HTMLElement {
     ContainerDiv.sizeAttributes.forEach((attr) => {
       const size = this.getAttribute(attr) as ISizes | undefined;
       if (size && this.#sizes.includes(size)) {
-        this.#attrMap[attr].forEach((element) => {
-          this.style[element as string] = this.defaults[size];
+        this.#attrMap[attr].forEach((element: keyof CSSStyleDeclaration) => {
+          //@ts-expect-error - We already defined the legal subset in attrMap
+          this.style[element] = this.defaults[size];
         });
       } else {
         this.#attrMap[attr].forEach((element) => {
-          this.style[element as string] = undefined;
+          //@ts-expect-error - We already defined the legal subset in attrMap
+          this.style[element] = undefined;
         });
       }
     });

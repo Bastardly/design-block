@@ -1,0 +1,40 @@
+{
+  "name": "@flemminghansen/design-block",
+  "version": "0.1.0",
+  "description": "Simplify design by controlling spacing declaratively using design blocks.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "@ognaf/core": "0.2.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "typescript": "5.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "webcomponent",
+    "webcomponent2",
+    "we component",
+    "we components",
+    "design",
+    "ux",
+    "design system"
+  ],
+  "author": "Flemming Hansen",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

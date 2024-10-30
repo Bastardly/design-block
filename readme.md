@@ -27,7 +27,7 @@ define('element-name', DesignBlock);
 
 "element-name" can be anything, as long as it starts with a lowercase letter and contains a hyphen. You can read more about defining names on custom elements here: [valid-custom-element-name](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)
 
-Once a valid name is defined, you can then use the custom component as such:
+Once a valid name is defined, you can then use the custom component as a normal HTMLElement as such:
 
 ```HTML
 <element-name p="sm" ml="xxl">Hello world!</element-name>
@@ -46,3 +46,35 @@ But! Currently, we haven't defined the values of the attributes. We do that with
     }
 ```
 
+## Using with React and typescript
+If you try to use a custom element with React and TypeScript, you'll need to define it in the JSX global scope
+
+If you look in your tsconfig, you can typecally see where your typings are located. It may look something like this:
+
+```JSON
+		"typeRoots": [
+			"./node_modules/@types",
+			"./typings/"
+		],
+```
+In your typings folder, or whatever it is called, there is usually a file where you define your globals. In that file, you define the custom element as such:
+
+```TypeScript
+import React from "react";
+import type { IDesignBlock } from "@Flemminghansen/design-block";
+
+export {};
+
+type ReactWebComponent<T> = T & React.HTMLAttributes<HTMLElement>;
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "element-name": ReactWebComponent<IDesignBlock>;
+    }
+  }
+}
+
+```
+
+You should now be able to use the custom-element without type errors.

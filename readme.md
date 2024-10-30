@@ -194,9 +194,9 @@ Then you can use the elements as you like:
 <body>
     <style>
       :root {
-        --container-background: "#eee";
-        --border-radius: "3px";
-        --border: "1px solid #aaa";
+        --container-background: #eee;
+        --border-radius: 3px;
+        --border: 1px solid #aaa;
         --xs: 2px; 
         --sm: 4px; 
         --md: 6px; 

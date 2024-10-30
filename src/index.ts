@@ -1,6 +1,6 @@
 export { define } from "@ognaf/core";
 
-interface IContainerDefaults {
+interface ISizeDefinitions {
   zero: string;
   xs: string;
   sm: string;
@@ -16,18 +16,18 @@ type IFlexSpacingAttributes = "rowgap" | "colgap";
 type ISizeAttribute = IPaddings | IMargins | IFlexSpacingAttributes;
 type IAttribute = ISizeAttribute | "direction";
 
-type ISizes = keyof IContainerDefaults;
+type ISizes = keyof ISizeDefinitions;
 
 /**
- * IContainerDiv is a type used to define props in React
+ * IDesignBlock is a type used to define props in React
  */
-export type IContainerDiv = Partial<
-  | Record<ISizeAttribute, keyof IContainerDefaults> & {
+export type IDesignBlock = Partial<
+  | Record<ISizeAttribute, keyof ISizeDefinitions> & {
       direction: "row" | "column";
     }
 >;
 
-export class ContainerDiv extends HTMLElement {
+export class DesignBlock extends HTMLElement {
   #transitionMs = 300;
 
   constructor(transitionMs?: number) {
@@ -55,7 +55,7 @@ export class ContainerDiv extends HTMLElement {
   ];
 
   static observedAttributes: IAttribute[] = [
-    ...ContainerDiv.sizeAttributes,
+    ...DesignBlock.sizeAttributes,
     "direction",
   ];
 
@@ -79,7 +79,7 @@ export class ContainerDiv extends HTMLElement {
     rowgap: ["rowGap"],
   };
 
-  defaults: IContainerDefaults = {
+  #defaults: ISizeDefinitions = {
     zero: "0",
     xs: "var(--xs)",
     sm: "var(--sm)",
@@ -89,13 +89,13 @@ export class ContainerDiv extends HTMLElement {
     xxl: "var(--xxl)",
   };
 
-  updateAttributes() {
-    ContainerDiv.sizeAttributes.forEach((attr) => {
+  #updateAttributes() {
+    DesignBlock.sizeAttributes.forEach((attr) => {
       const size = this.getAttribute(attr) as ISizes | undefined;
       if (size && this.#sizes.includes(size)) {
         this.#attrMap[attr].forEach((element: keyof CSSStyleDeclaration) => {
           //@ts-expect-error - We already defined the legal subset in attrMap
-          this.style[element] = this.defaults[size];
+          this.style[element] = this.#defaults[size];
         });
       } else {
         this.#attrMap[attr].forEach((element) => {
@@ -111,10 +111,10 @@ export class ContainerDiv extends HTMLElement {
   connectedCallback() {
     this.style.display = "flex";
     this.style.transition = `all ${this.#transitionMs}ms`;
-    this.updateAttributes();
+    this.#updateAttributes();
   }
 
   attributeChangedCallback() {
-    this.updateAttributes();
+    this.#updateAttributes();
   }
 }

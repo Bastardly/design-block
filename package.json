@@ -1,6 +1,6 @@
 {
   "name": "@flemminghansen/design-block",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Simplify design by controlling spacing declaratively using design blocks.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

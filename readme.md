@@ -79,7 +79,7 @@ Design block is based on flex with column as direction to simulate a normal bloc
 
 
 ## direction
-flex direction
+flexDirection
 
 "column" | "row"
 
@@ -181,7 +181,7 @@ class MyContainer extends DesignBlock {
     this.style.borderRadius = "var(--border-radius)";
     this.style.border = "var(--border)";
     this.style.rowGap = "var(--lg)";
-    this.style.pading = "var(--xxl)";
+    this.style.padding = "var(--xxl)";
   }
 }
 

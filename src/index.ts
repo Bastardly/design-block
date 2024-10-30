@@ -104,7 +104,7 @@ export class DesignBlock extends HTMLElement {
         });
       }
     });
-    this.style.direction =
+    this.style.flexDirection =
       this.getAttribute("direction") === "row" ? "row" : "column";
   }
 

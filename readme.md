@@ -56,7 +56,7 @@ In your typings folder, or whatever it is called, there is usually a file where 
 
 ```TypeScript
 import React from "react";
-import type { IDesignBlock } from "@Flemminghansen/design-block";
+import type { IDesignBlock } from "@flemminghansen/design-block";
 
 export {};
 

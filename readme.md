@@ -185,7 +185,7 @@ class MyContainer extends DesignBlock {
   }
 }
 
-define('my-container', DesignBlock);
+define('my-container', MyContainer);
 define('design-block', DesignBlock);
 ```
 

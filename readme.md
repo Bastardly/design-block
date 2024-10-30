@@ -46,7 +46,7 @@ But! Currently, we haven't defined the values of the attributes. We do that with
     }
 ```
 
-## Using with React and typescript
+## Using with React and Typescript
 If you try to use a custom element with React and TypeScript, you'll need to define it in the JSX global scope
 
 If you look in your tsconfig, you can typecally see where your typings are located. It may look something like this:

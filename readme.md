@@ -1,5 +1,3 @@
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/flemminghansen/design-block)
-
 # What is a Design Block?
 Imagine that you could make custom HTMLDivElement, but instead of a huge bundle of css-classes to define spacing, you use attributes. But these attributes are locked to given values, limiting margins or padding to values like "zero", "xs", "sm", "md", "lg", "xl", "xxl". This will make your design pattern a lot more consistant, while being extremely easy to work with.
 

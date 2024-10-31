@@ -1,6 +1,6 @@
 export { define } from "@ognaf/core";
 
-interface ISizeDefinitions {
+type ISizeDefinitions = {
   zero: string;
   xs: string;
   sm: string;
@@ -8,13 +8,15 @@ interface ISizeDefinitions {
   lg: string;
   xl: string;
   xxl: string;
-}
+};
 
-type IPaddings = "p" | "px" | "py" | "pt" | "pr" | "pb" | "pl";
-type IMargins = "m" | "mx" | "my" | "mt" | "mr" | "mb" | "ml";
-type IFlexSpacingAttributes = "rowgap" | "colgap";
-type ISizeAttribute = IPaddings | IMargins | IFlexSpacingAttributes;
-type IAttribute = ISizeAttribute | "direction";
+// todo plural fy fy
+
+type IPadding = "p" | "px" | "py" | "pt" | "pr" | "pb" | "pl";
+type IMargin = "m" | "mx" | "my" | "mt" | "mr" | "mb" | "ml";
+type IFlexSpacingAttribute = "rowgap" | "colgap";
+type ISizeAttribute = IPadding | IMargin | IFlexSpacingAttribute;
+type IAttribute = ISizeAttribute | "direction" | "transition";
 
 type ISizes = keyof ISizeDefinitions;
 
@@ -24,17 +26,11 @@ type ISizes = keyof ISizeDefinitions;
 export type IDesignBlock = Partial<
   | Record<ISizeAttribute, keyof ISizeDefinitions> & {
       direction: "row" | "column";
+      transition: string;
     }
 >;
 
 export class DesignBlock extends HTMLElement {
-  #transitionMs = 300;
-
-  constructor(transitionMs?: number) {
-    super();
-    this.#transitionMs = transitionMs || this.#transitionMs;
-  }
-
   static sizeAttributes: ISizeAttribute[] = [
     "p",
     "px",
@@ -57,6 +53,7 @@ export class DesignBlock extends HTMLElement {
   static observedAttributes: IAttribute[] = [
     ...DesignBlock.sizeAttributes,
     "direction",
+    "transition",
   ];
 
   #sizes: ISizes[] = ["zero", "xs", "sm", "md", "lg", "xl", "xxl"];
@@ -80,13 +77,13 @@ export class DesignBlock extends HTMLElement {
   };
 
   #defaults: ISizeDefinitions = {
-    zero: "0",
-    xs: "var(--xs)",
-    sm: "var(--sm)",
-    md: "var(--md)",
-    lg: "var(--lg)",
-    xl: "var(--xl)",
-    xxl: "var(--xxl)",
+    zero: "var(--zero, 0)",
+    xs: "var(--xs, 2px)",
+    sm: "var(--sm, 4px)",
+    md: "var(--md, 8px)",
+    lg: "var(--lg, 12px)",
+    xl: "var(--xl, 20px)",
+    xxl: "var(--xxl, 32px)",
   };
 
   #updateAttributes() {
@@ -106,11 +103,12 @@ export class DesignBlock extends HTMLElement {
     });
     this.style.flexDirection =
       this.getAttribute("direction") === "row" ? "row" : "column";
+    this.style.transition = this.getAttribute("direction") || `all 300ms`;
   }
 
   connectedCallback() {
     this.style.display = "flex";
-    this.style.transition = `all ${this.#transitionMs}ms`;
+
     this.#updateAttributes();
   }
 

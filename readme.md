@@ -1,3 +1,5 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/flemminghansen/design-block)
+
 # What is a Design Block?
 Imagine that you could make custom HTMLDivElement, but instead of a huge bundle of css-classes to define spacing, you use attributes. But these attributes are locked to given values, limiting margins or padding to values like "zero", "xs", "sm", "md", "lg", "xl", "xxl". This will make your design pattern a lot more consistant, while being extremely easy to work with.
 
@@ -10,6 +12,23 @@ In your console, run:
 npm install @flemminghansen/design-block
 ```
 
+
+# Demo
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="my-element.html">
+    <link rel="import" href="../other-element/other-element.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<other-element></other-element>
+<my-element></my-element>
+```
 
 # Usage
 Since Design Block is a custom element, you'll need to define it first at the root of your app or module. If you are using SSR, you can define the custom component in an accompanied js file to your render.
@@ -34,10 +53,10 @@ But! Currently, we haven't defined the values of the attributes. We do that with
     :root {
         --xs: 2px; 
         --sm: 4px; 
-        --md: 6px; 
+        --md: 8px; 
         --lg: 12px; 
         --xl: 20px; 
-        --xxl: 40px; 
+        --xxl: 32px; 
     }
 ```
 
@@ -85,85 +104,124 @@ flexDirection
 
 Defaults to "column".
 
+## transition
+transition
+
+string
+
+Defaults to "all 300ms".
+
 ## p
 padding
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## px
 padding-left and padding-right
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## py
 padding-top and padding-bottom
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## pt
 padding-top
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## pr
 padding-right
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## pb
 padding-bottom
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## pl
 padding-left
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## m
 margin
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## mx
 margin-left and margin-right
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## my
 margin-top and margin-bottom
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## mt
 margin-top
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## mr
 margin-right
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## mb
 margin-bottom
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 ## ml
 margin-left
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## rowgap
 rowGap
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
+Defaults to undefined.
+
 ## colgap
 columnGap
 
 "zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+
+Defaults to undefined.
 
 
 # Customization
@@ -199,10 +257,10 @@ Then you can use the elements as you like:
         --border: 1px solid #aaa;
         --xs: 2px; 
         --sm: 4px; 
-        --md: 6px; 
+        --md: 8px; 
         --lg: 12px; 
         --xl: 20px; 
-        --xxl: 40px; 
+        --xxl: 32px; 
       }
 
       @media (max-width: 60em) {
@@ -227,23 +285,3 @@ Then you can use the elements as you like:
   {/* etc... */}
 </body>
 ```
-
-## Contructor properties
-Currently the design block has a default transition speed on all attributes, which is set to 300ms. This way, transitions will be smoother when changing screen breakpoints.
-
-This however can be changed by passing a value into the super parameter.
-
-```JavaScript
-import { DesignBlock, define } from "@flemminghansen/design-block";
-
-const newTransitionSpeedInMs = 1000;
-
-class MyContainer extends DesignBlock {
-  constructor() {
-    super(newTransitionSpeedInMs);
-  }
-}
-
-define('my-container', DesignBlock);
-```
-

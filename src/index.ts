@@ -1,5 +1,3 @@
-export { define } from "@ognaf/core";
-
 type ISizeDefinitions = {
   zero: string;
   xs: string;
@@ -115,4 +113,24 @@ export class DesignBlock extends HTMLElement {
   attributeChangedCallback() {
     this.#updateAttributes();
   }
+}
+
+/**
+ * The define helper only define the custom element if it does not already exist.
+ * Otherwise, it will be ignored. Once the component is defined, we can access it anywhere
+ * in the DOM by its given name.
+ *
+ * @example
+ * <my-component></my-component>
+ */
+export function define(
+  name: string,
+  webcomponentClass: CustomElementConstructor,
+  options?: ElementDefinitionOptions
+) {
+  if (!window.customElements?.get(name)) {
+    window.customElements.define(name, webcomponentClass, options);
+  }
+
+  return name;
 }

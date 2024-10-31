@@ -119,7 +119,7 @@ transition
 
 string
 
-Defaults to "all 300ms".
+Defaults to "var(--transition, all 300ms)".
 
 ## p
 padding

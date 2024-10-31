@@ -101,7 +101,7 @@ export class DesignBlock extends HTMLElement {
     });
     this.style.flexDirection =
       this.getAttribute("direction") === "row" ? "row" : "column";
-    this.style.transition = this.getAttribute("direction") || `all 300ms`;
+    this.style.transition = this.getAttribute("direction") || "var(--transition, all 300ms)";
   }
 
   connectedCallback() {

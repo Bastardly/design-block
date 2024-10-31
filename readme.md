@@ -47,18 +47,28 @@ Once a valid name is defined, you can then use the custom component as a normal 
 <element-name p="sm" ml="xxl">Hello world!</element-name>
 ```
 
-But! Currently, we haven't defined the values of the attributes. We do that with css variables.
+But! Currently, we are relying on the falback size values. To override the fallback values, we use css variables.
 
 ```CSS
     :root {
-        --xs: 2px; 
-        --sm: 4px; 
-        --md: 8px; 
+        --xs: 1px; 
+        --sm: 3px; 
+        --md: 6px; 
         --lg: 12px; 
-        --xl: 20px; 
-        --xxl: 32px; 
+        --xl: 24px; 
+        --xxl: 40px; 
     }
 ```
+
+## Default size values
+- zero: "var(--zero, 0)",
+- xs: "var(--xs, 2px)",
+- sm: "var(--sm, 4px)",
+- md: "var(--md, 8px)",
+- lg: "var(--lg, 12px)",
+- xl: "var(--xl, 20px)",
+- xxl: "var(--xxl, 32px)",
+
 
 ## Using with React and Typescript
 If you try to use a custom element with React and TypeScript, you'll need to define it in the JSX global scope

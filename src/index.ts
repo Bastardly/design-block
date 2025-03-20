@@ -1,5 +1,6 @@
 type ISizeDefinitions = {
   zero: string;
+  xxs: string;
   xs: string;
   sm: string;
   md: string;
@@ -48,13 +49,11 @@ export class DesignBlock extends HTMLElement {
     "colgap",
   ];
 
-  static observedAttributes: IAttribute[] = [
-    ...DesignBlock.sizeAttributes,
-    "direction",
-    "transition",
-  ];
+  static get observedAttributes(): IAttribute[] {
+    return [...DesignBlock.sizeAttributes, "direction", "transition"];
+  }
 
-  #sizes: ISizes[] = ["zero", "xs", "sm", "md", "lg", "xl", "xxl"];
+  #sizes: ISizes[] = ["zero", "xxs", "xs", "sm", "md", "lg", "xl", "xxl"];
   #attrMap: Record<ISizeAttribute, (keyof CSSStyleDeclaration)[]> = {
     p: ["padding"],
     px: ["paddingLeft", "paddingRight"],
@@ -76,6 +75,7 @@ export class DesignBlock extends HTMLElement {
 
   #defaults: ISizeDefinitions = {
     zero: "var(--zero, 0)",
+    xxs: "var(--xxs, 1px)",
     xs: "var(--xs, 2px)",
     sm: "var(--sm, 4px)",
     md: "var(--md, 8px)",
@@ -101,7 +101,8 @@ export class DesignBlock extends HTMLElement {
     });
     this.style.flexDirection =
       this.getAttribute("direction") === "row" ? "row" : "column";
-    this.style.transition = this.getAttribute("direction") || "var(--transition, all 300ms)";
+    this.style.transition =
+      this.getAttribute("direction") || "var(--transition, all 300ms)";
   }
 
   connectedCallback() {

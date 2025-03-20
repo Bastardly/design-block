@@ -31,7 +31,8 @@ But! Currently, we are relying on the falback size values. To override the fallb
 
 ```CSS
     :root {
-        --xs: 1px; 
+        --xxs: 1px; 
+        --xs: 2px; 
         --sm: 3px; 
         --md: 6px; 
         --lg: 12px; 
@@ -42,6 +43,7 @@ But! Currently, we are relying on the falback size values. To override the fallb
 
 ## Default size values
 - zero: "var(--zero, 0)",
+- xs: "var(--xxs, 1px)",
 - xs: "var(--xs, 2px)",
 - sm: "var(--sm, 4px)",
 - md: "var(--md, 8px)",
@@ -104,112 +106,112 @@ Defaults to "var(--transition, all 300ms)".
 ## p
 padding
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## px
 padding-left and padding-right
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## py
 padding-top and padding-bottom
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## pt
 padding-top
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## pr
 padding-right
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## pb
 padding-bottom
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## pl
 padding-left
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## m
 margin
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## mx
 margin-left and margin-right
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## my
 margin-top and margin-bottom
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## mt
 margin-top
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## mr
 margin-right
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## mb
 margin-bottom
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## ml
 margin-left
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## rowgap
 rowGap
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
 ## colgap
 columnGap
 
-"zero" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+"zero" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 Defaults to undefined.
 
@@ -245,6 +247,7 @@ Then you can use the elements as you like:
         --container-background: #eee;
         --border-radius: 3px;
         --border: 1px solid #aaa;
+        --xxs: 1px; 
         --xs: 2px; 
         --sm: 4px; 
         --md: 8px; 
@@ -255,6 +258,7 @@ Then you can use the elements as you like:
 
       @media (max-width: 60em) {
         :root {
+            --xxs: 1px; 
             --xs: 1px; 
             --sm: 2px; 
             --md: 4px; 
